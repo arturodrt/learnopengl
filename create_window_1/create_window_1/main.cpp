@@ -4,10 +4,19 @@
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
+void processInput(GLFWwindow* window);
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
 }
+
+void processInput(GLFWwindow* window)
+{
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, true);
+}
+
 
 int main()
 {
@@ -47,12 +56,18 @@ int main()
 	/* render loop */
 	while (!glfwWindowShouldClose(window))
 	{
-		/* will swap the color buffer (a large 2D buffer that contains color 
-		values for each pixel in GLFW�s window)*/
-		glfwSwapBuffers(window);
+		/* check whether the user has pressed the escape key */
+		processInput(window);
+
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
 
 		/* checks if any events are triggered */
 		glfwPollEvents();
+
+		/* will swap the color buffer (a large 2D buffer that contains color 
+		values for each pixel in GLFW�s window)*/
+		glfwSwapBuffers(window);
 	}
 
 	/*  clean/delete all of GLFW�s resources that were allocated */
