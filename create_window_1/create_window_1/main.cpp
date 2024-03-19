@@ -21,6 +21,7 @@ int main()
 
 	/*  create a window object */
 	GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
+	
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -47,14 +48,14 @@ int main()
 	while (!glfwWindowShouldClose(window))
 	{
 		/* will swap the color buffer (a large 2D buffer that contains color 
-		values for each pixel in GLFW’s window)*/
+		values for each pixel in GLFWï¿½s window)*/
 		glfwSwapBuffers(window);
 
 		/* checks if any events are triggered */
 		glfwPollEvents();
 	}
 
-	/*  clean/delete all of GLFW’s resources that were allocated */
+	/*  clean/delete all of GLFWï¿½s resources that were allocated */
 	glfwTerminate();
 
 	return 0;
